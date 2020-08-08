@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: "2020-08-03T09:10:24Z"
+  creationTimestamp: "2020-08-08T09:25:48Z"
   generation: 1
   labels:
     app: ftps
@@ -34,7 +34,7 @@ metadata:
               f:app: {}
           f:spec:
             f:containers:
-              k:{"name":"my-ftps-fcwh9"}:
+              k:{"name":"my-ftps"}:
                 .: {}
                 f:image: {}
                 f:imagePullPolicy: {}
@@ -49,12 +49,12 @@ metadata:
             f:terminationGracePeriodSeconds: {}
     manager: kubectl
     operation: Update
-    time: "2020-08-03T09:10:24Z"
+    time: "2020-08-08T09:25:48Z"
   name: ftps
   namespace: default
-  resourceVersion: "736507"
+  resourceVersion: "1978"
   selfLink: /apis/apps/v1/namespaces/default/deployments/ftps
-  uid: a8066d4f-74c6-4d6b-b7b0-01f95a9f9c84
+  uid: 2b654aa6-fccb-4f56-aab0-39825adf1c12
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -74,9 +74,9 @@ spec:
         app: ftps
     spec:
       containers:
-      - image: my_ftps
+      - image: my-ftps
         imagePullPolicy: Never
-        name: my-ftps-fcwh9
+        name: my-ftps
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
