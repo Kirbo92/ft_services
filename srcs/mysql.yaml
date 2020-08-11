@@ -6,12 +6,11 @@ metadata:
   name: mysql
 spec:
   ports:
-  - port: 5050
+  - port: 3306
     protocol: TCP
-    targetPort: 5050
+    targetPort: 3306
   selector:
     app: mysql
-  type: ClusterIP
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -72,7 +71,7 @@ spec:
         ports:
         - name: mysql
           containerPort: 3306
-        volumeMounts:
-          - name: mysql-pv-storage
-            mountPath: "/var/lib/mysql/"
+        #volumeMounts:
+        #  - name: mysql-pv-storage
+        #    mountPath: "/var/lib/mysql/"
       restartPolicy: Always
