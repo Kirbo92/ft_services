@@ -11,7 +11,7 @@ RUN apk update && \
 	-keyout /etc/ssl/private/migferna.key \
 	-out /etc/ssl/certs/migferna.crt
 
-EXPOSE 21 30020 30030
+EXPOSE 21 30021
 
 ENTRYPOINT ["vsftpd"] 
 CMD ["/srcs/vsftpd.conf"]

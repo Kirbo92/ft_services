@@ -1,64 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ftps
+  name: ftps
+spec:
+  ports:
+  - name: data
+    port: 20
+    targetPort: 20
+  - name: ftps
+    port: 21
+    protocol: TCP
+    targetPort: 21
+  - name: ftps-pasv
+    port: 30021
+    protocol: TCP
+    targetPort: 30021
+  selector:
+    app: ftps
+  type: LoadBalancer
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: "2020-08-08T09:25:48Z"
-  generation: 1
   labels:
     app: ftps
-  managedFields:
-  - apiVersion: apps/v1
-    fieldsType: FieldsV1
-    fieldsV1:
-      f:metadata:
-        f:labels:
-          .: {}
-          f:app: {}
-      f:spec:
-        f:progressDeadlineSeconds: {}
-        f:replicas: {}
-        f:revisionHistoryLimit: {}
-        f:selector:
-          f:matchLabels:
-            .: {}
-            f:app: {}
-        f:strategy:
-          f:rollingUpdate:
-            .: {}
-            f:maxSurge: {}
-            f:maxUnavailable: {}
-          f:type: {}
-        f:template:
-          f:metadata:
-            f:labels:
-              .: {}
-              f:app: {}
-          f:spec:
-            f:containers:
-              k:{"name":"my-ftps"}:
-                .: {}
-                f:image: {}
-                f:imagePullPolicy: {}
-                f:name: {}
-                f:resources: {}
-                f:terminationMessagePath: {}
-                f:terminationMessagePolicy: {}
-            f:dnsPolicy: {}
-            f:restartPolicy: {}
-            f:schedulerName: {}
-            f:securityContext: {}
-            f:terminationGracePeriodSeconds: {}
-    manager: kubectl
-    operation: Update
-    time: "2020-08-08T09:25:48Z"
   name: ftps
-  namespace: default
-  resourceVersion: "1978"
-  selfLink: /apis/apps/v1/namespaces/default/deployments/ftps
-  uid: 2b654aa6-fccb-4f56-aab0-39825adf1c12
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: ftps
@@ -76,13 +46,7 @@ spec:
       containers:
       - image: my-ftps
         imagePullPolicy: Never
-        name: my-ftps
-        resources: {}
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 30
-status: {}
+        name: ftps
+        ports:
+        - containerPort: 21
+        - containerPort: 30021
