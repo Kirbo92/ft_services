@@ -1,5 +1,6 @@
 FROM alpine
 
+ARG IP
 
 COPY ./srcs /srcs/
 

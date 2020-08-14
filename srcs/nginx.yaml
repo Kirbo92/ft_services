@@ -10,14 +10,17 @@ spec:
     port: 22
     protocol: TCP
     targetPort: 22
+    #nodePort: 22
   - name: http
     port: 80
     protocol: TCP
     targetPort: 80
+    #nodePort: 80
   - name: https
     port: 443
     protocol: TCP
     targetPort: 443
+    #nodePort: 443
   selector:
     app: nginx
   type: LoadBalancer
