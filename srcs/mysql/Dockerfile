@@ -11,6 +11,4 @@ RUN apk add mariadb mariadb-client && \
 
 EXPOSE 3306
 
-VOLUME ["/var/lib/mysql"]
-
-ENTRYPOINT mariadbd-safe --user=root --datadir="/var/lib/mysql"
+ENTRYPOINT mariadbd-safe --user=root --datadir="/var/lib/mysql/"

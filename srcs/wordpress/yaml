@@ -13,7 +13,7 @@ spec:
   selector:
     app: wordpress
   type: LoadBalancer
-  loadBalancerIP: 192.168.99.103
+  loadBalancerIP: <WORDPRESS_IP>
 ---
 apiVersion: apps/v1
 kind: Deployment

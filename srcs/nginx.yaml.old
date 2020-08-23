@@ -24,7 +24,7 @@ spec:
   selector:
     app: nginx
   type: LoadBalancer
-  loadBalancerIP: 192.168.99.101
+  loadBalancerIP: <NGINX_IP>
 ---
 apiVersion: apps/v1
 kind: Deployment

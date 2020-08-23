@@ -1,7 +1,7 @@
 seccomp_sandbox=NO
 pasv_min_port=30020
 pasv_max_port=30021
-pasv_address=192.168.99.104
+pasv_address=0.0.0.0
 
 # Example config file /etc/vsftpd.conf
 #

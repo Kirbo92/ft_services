@@ -1,7 +1,5 @@
 FROM alpine
 
-ARG IP
-
 RUN apk update && \
 	apk add php7 php7-fpm php7-mbstring php7-mysqli php7-json && \
 	mkdir -p /www/wordpress/ && \
@@ -10,7 +8,5 @@ RUN apk update && \
 	rm -rf /www/wordpress/latest-es_ES.tar.gz
 
 COPY /srcs/wp-config.php /www/wordpress/wp-config.php
-
-RUN sed -i "s/MINIKUBE_IP/$IP/g" /www/wordpress/wp-config.php
 
 CMD php -S 0.0.0.0:5050 -t /www/wordpress
