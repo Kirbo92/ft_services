@@ -79,8 +79,13 @@ kubectl apply -f srcs/influxdb.yaml
 kubectl apply -f srcs/telegraf.yaml
 echo -e "${GREEN}Deploy Finish${END}"
 
-sleep 3
+sleep 10
 POD_NAME=`kubectl get pods | awk '/mysql/ {print $1}'`
+while [ "Running" != "$(kubectl get pods | awk '/mysql/ {print $3}')" ]; do
+	echo MySQL pod not ready
+    sleep 2
+done
+echo $POD_NAME
 kubectl exec -it $POD_NAME mariadb < srcs/mysql/srcs/data.sql
 kubectl exec -it $POD_NAME mariadb < srcs/mysql/srcs/wordpress.sql
 
