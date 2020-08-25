@@ -86,8 +86,8 @@ while [ "Running" != "$(kubectl get pods | awk '/mysql/ {print $3}')" ]; do
     sleep 2
 done
 echo $POD_NAME
-kubectl exec -it $POD_NAME mariadb < srcs/mysql/srcs/data.sql
-kubectl exec -it $POD_NAME mariadb < srcs/mysql/srcs/wordpress.sql
+kubectl exec -it $POD_NAME -- mariadb < srcs/mysql/srcs/data.sql
+kubectl exec -it $POD_NAME -- mariadb < srcs/mysql/srcs/wordpress.sql
 
 echo "NGINX: http://$NGINX_IP/"
 echo "PhpMyAdmin: http://$PHPMYADMIN_IP:5000/"
